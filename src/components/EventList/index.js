@@ -7,7 +7,6 @@ import EventCard from './EventCard';
 
 export default function EventList({ navigation }) {
   const [loading, setLoading] = useState(true);
-  const [cardImage, setCardImage] = useState(0);
 
   useEffect(() => {
     setTimeout(() => {
