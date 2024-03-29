@@ -10,12 +10,12 @@ export default function Home({ navigation }) {
       </View>
       <View style={styles.button}>
         <TouchableOpacity onPress={() => navigation.navigate('EventList')}>
-          <Text style={styles.textoBotao}>Ver Cantores</Text>
+          <Text style={styles.textButton}>Ver Cantores</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.button}>
         <TouchableOpacity onPress={() => BackHandler.exitApp() }>
-          <Text style={styles.textoBotao}>Sair</Text>
+          <Text style={styles.textButton}>Sair</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     width: 200,
     alignSelf: 'center',
   },
-  textoBotao: {
+  textButton: {
     color: 'white',
     textAlign: 'center',
     fontSize: 16,

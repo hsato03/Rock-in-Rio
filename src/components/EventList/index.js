@@ -24,12 +24,12 @@ export default function EventList({ navigation }) {
         <View>
         <FlatList
           data={eventosJson}
+          keyExtractor={event => event.id}
           renderItem={({item}) =>
           <TouchableOpacity onPress={ () => navigation.navigate('About', {event: item})}>
             <EventCard event={item} />
           </TouchableOpacity>}
         />
-        <Button title="Voltar" onPress={() => navigation.navigate('Home')} />
         </View>
       )}
       </SafeAreaView>
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
    padding: 15,
    backgroundColor: '#000',
    width: '100%',
-   height: '100%'
+   height: '100%',
   },
   loading: {
     color: "#E30613",
