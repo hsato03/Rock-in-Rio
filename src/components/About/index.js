@@ -1,6 +1,10 @@
 import * as React from 'react';
 import { Text, View, StyleSheet, Button, Linking, Platform, SafeAreaView, Image, ScrollView, Dimensions } from 'react-native';
 import YouTubePlayer from 'react-native-youtube-iframe';
+import MapView, { Marker } from 'react-native-maps';
+
+import BuyTickets from '../BuyTickets';
+import LinkWithIcon from '../LinkWithIcon';
 
 export default function About ({ route, navigation }) {
   const {event} = route.params;
@@ -37,19 +41,48 @@ export default function About ({ route, navigation }) {
           />
         </View>
 
+        <View style={styles.scheduleContainer}>
+          <Text style={styles.subtitle}>Quando e onde acontecerá?</Text>
+          <Text style={styles.scheduleText}>{event.endereco}</Text>
+          <Text style={styles.scheduleDate}>{event.data}</Text>
+          <View style={styles.mapContainer}>
+            <MapView
+              style={styles.map}
+              initialRegion={{
+                latitude: event.geo.lat,
+                longitude: event.geo.lng,
+                latitudeDelta: 0.0922,
+                longitudeDelta: 0.0421,
+              }}
+            >
+              <Marker
+                coordinate={{ latitude: event.geo.lat, longitude: event.geo.lng }}
+              />
+            </MapView>
+          </View>
+        </View>
+
         <View style={styles.pricingContainer}>
           <Text style={styles.subtitle}>Valores</Text>
           <Text style={styles.pricingText}>Inteira: <Text style={styles.price}>R$ {event.valor.inteira}</Text></Text> 
           <Text style={styles.pricingText}>Meia-Entrada: <Text style={styles.price}>R$ {event.valor.meiaEntrada}</Text></Text>
+          <BuyTickets url={event.comprarIngressoUrl} />
         </View>
 
-        <View style={styles.button} >
-          <Button onPress={() => Linking.openURL(mapUrl) }
-            title="Localizar" />
-        </View>
-
-        <View style={styles.button} >
-          <Button title="Voltar" onPress={() => navigation.navigate('EventList')} />
+        <View>
+          <Text style={styles.subtitle}>Siga {event.artista}</Text>
+          <View style={styles.iconContainer}>
+            {
+              Object.keys(event.redesSociais).map((key, index) => <LinkWithIcon
+                key={index}
+                url={`${event.redesSociais[key]}`}
+                iconName={`${key}`}
+                iconSize={30}
+                iconColor="#FFF"
+              />
+              )
+            }
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -80,7 +113,7 @@ const styles = StyleSheet.create({
   subtitle: {
     color: "#FFF",
     fontWeight: "bold",
-    fontSize: 32,
+    fontSize: 28,
     fontStyle: 'italic',
     marginBottom: 8,
     alignSelf: 'center',
@@ -120,6 +153,10 @@ const styles = StyleSheet.create({
     height: 250,
     width: '95%'
   },
+  pricingContainer: {
+    marginBottom: 18, 
+    alignItems: 'center'
+  },
   pricingText: {
     color: '#FFF',
     fontSize: 16,
@@ -128,5 +165,36 @@ const styles = StyleSheet.create({
   price: {
     fontSize: 18,
     fontStyle: 'italic',
+  },
+  scheduleContainer: {
+    alignItems: 'center',
+    width: '95%',
+    marginBottom: 18,
+  },
+  scheduleText: {
+    fontSize: 16,
+    color: '#FFF',
+    paddingVertical: 8
+  },
+  scheduleDate: {
+    color: '#FFF',
+    fontSize: 18,
+    fontWeight: 'bold',
+    paddingBottom: 16
+  },
+  mapContainer: {
+    width: '90%',
+    height: 200,
+    marginBottom: 10,
+    borderRadius: 6,
+  },
+  map: {
+    width: '100%',
+    height: '100%',
+  },
+  iconContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    paddingVertical: 8,
   }
 });

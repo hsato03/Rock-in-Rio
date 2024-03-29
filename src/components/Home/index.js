@@ -1,12 +1,24 @@
 import * as React from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet, BackHandler, SafeAreaView, StatusBar } from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  StyleSheet,
+  BackHandler,
+  SafeAreaView,
+  StatusBar,
+} from 'react-native';
 
 export default function Home({ navigation }) {
   return (
     <SafeAreaView style={styles.areaView}>
-        <StatusBar />
+      <StatusBar />
       <View style={styles.container}>
-        <Image style={styles.logo} source={require('../../../assets/logo.png')} />
+        <Image
+          style={styles.logo}
+          source={require('../../../assets/logo.png')}
+        />
       </View>
       <View style={styles.button}>
         <TouchableOpacity onPress={() => navigation.navigate('EventList')}>
@@ -14,7 +26,7 @@ export default function Home({ navigation }) {
         </TouchableOpacity>
       </View>
       <View style={styles.button}>
-        <TouchableOpacity onPress={() => BackHandler.exitApp() }>
+        <TouchableOpacity onPress={() => BackHandler.exitApp()}>
           <Text style={styles.textButton}>Sair</Text>
         </TouchableOpacity>
       </View>
@@ -26,7 +38,7 @@ const styles = StyleSheet.create({
   areaView: {
     backgroundColor: '#000',
     width: '100%',
-    height: '100%'
+    height: '100%',
   },
   container: {
     alignItems: 'center',
@@ -46,8 +58,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#E30613',
     shadowColor: 'rgba(0, 0, 0, 0.12)',
     shadowOffset: {
-        width: 2,
-        height: 2,
+      width: 2,
+      height: 2,
     },
     shadowOpacity: 1,
     shadowRadius: 4,
