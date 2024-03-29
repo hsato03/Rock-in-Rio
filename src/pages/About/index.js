@@ -3,8 +3,8 @@ import { Text, View, StyleSheet, Button, Linking, Platform, SafeAreaView, Image,
 import YouTubePlayer from 'react-native-youtube-iframe';
 import MapView, { Marker } from 'react-native-maps';
 
-import BuyTickets from '../BuyTickets';
-import LinkWithIcon from '../LinkWithIcon';
+import BuyTickets from '../../components/BuyTickets';
+import LinkWithIcon from '../../components/LinkWithIcon';
 
 export default function About ({ route, navigation }) {
   const {event} = route.params;
