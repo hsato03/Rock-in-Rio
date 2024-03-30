@@ -1,7 +1,8 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
+import FavoriteButton from '../../FavoriteButton';
 
-export default function EventCard({ event }) {
+export default function EventCard({ event, setFavorites }) {
   return (
     <View style={styles.container}>
       <Image style={styles.image} source={{ uri: event.images[0] }} />
@@ -10,6 +11,9 @@ export default function EventCard({ event }) {
           <Text style={styles.title}>{event.artista}</Text>
           <Text style={styles.infoText}>{event.data}</Text>
           <Text style={styles.infoText}>{event.endereco}</Text>
+          <View style={styles.favoriteButton}>
+            <FavoriteButton event={event} setFavorites={setFavorites} />
+          </View>
         </View>
       </View>
     </View>
@@ -27,7 +31,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     width: '95%',
     alignSelf: 'center',
-    borderRadius: 6,
+    borderRadius: 6
   },
   title: {
     color: '#E30613',
@@ -42,7 +46,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   info: {
-    gap: 6,
+    gap: 2,
     marginBottom: 16,
   },
   image: {
@@ -57,4 +61,7 @@ const styles = StyleSheet.create({
     width: 150,
     justifyContent: 'space-around',
   },
+  favoriteButton: {
+    alignSelf: 'flex-end',
+  }
 });

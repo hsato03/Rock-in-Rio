@@ -21,8 +21,8 @@ export default function Home({ navigation }) {
         />
       </View>
       <View style={styles.button}>
-        <TouchableOpacity onPress={() => navigation.navigate('EventList')}>
-          <Text style={styles.textButton}>Ver Cantores</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('Drawer')}>
+          <Text style={styles.textButton}>Entrar</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.button}>

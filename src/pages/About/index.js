@@ -1,19 +1,14 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, Button, Linking, Platform, SafeAreaView, Image, ScrollView, Dimensions } from 'react-native';
+import { Text, View, StyleSheet, SafeAreaView, Image, ScrollView } from 'react-native';
 import YouTubePlayer from 'react-native-youtube-iframe';
 import MapView, { Marker } from 'react-native-maps';
 
 import BuyTickets from '../../components/BuyTickets';
 import LinkWithIcon from '../../components/LinkWithIcon';
 
-export default function About ({ route, navigation }) {
+export default function About ({ route }) {
   const {event} = route.params;
   
-  const mapUrl = Platform.select({
-   ios: `maps:0,0?q=${event.geo.lat},${event.geo.lng}`,
-   android: `geo:0,0?q=${event.geo.lat},${event.geo.lng}`
-  });
-
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollViewContent} style={{ width: '100%' }}>

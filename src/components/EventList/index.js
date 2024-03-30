@@ -1,20 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Text,
   View,
   StyleSheet,
-  Button,
   ActivityIndicator,
   FlatList,
   TouchableOpacity,
   SafeAreaView,
 } from 'react-native';
 
-import eventosJson from '../../mocks/eventos.json';
-
 import EventCard from './EventCard';
 
-export default function EventList({ navigation }) {
+export default function EventList({ navigation, events, setFavorites }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -25,6 +21,7 @@ export default function EventList({ navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
+      <View style={styles.gambiarra}></View>
       {loading ? (
         <View style={styles.loading}>
           <ActivityIndicator size="large" color={'#E30613'} />
@@ -32,13 +29,13 @@ export default function EventList({ navigation }) {
       ) : (
         <View>
           <FlatList
-            data={eventosJson}
+            data={events}
             keyExtractor={(event) => event.id}
             renderItem={({ item }) => (
               <TouchableOpacity
                 onPress={() => navigation.navigate('About', { event: item })}
               >
-                <EventCard event={item} />
+                <EventCard event={item} setFavorites={setFavorites} />
               </TouchableOpacity>
             )}
           />
@@ -50,7 +47,6 @@ export default function EventList({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 15,
     backgroundColor: '#000',
     width: '100%',
     height: '100%',
@@ -65,4 +61,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  gambiarra: {
+    height: 50
+  }
 });
