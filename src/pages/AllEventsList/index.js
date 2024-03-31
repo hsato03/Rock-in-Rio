@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import EventList from '../../components/EventList';
 
-import { loadEvents } from '../../services/carregaDados';
-
-export default function AllEventsList({ navigation,setFavorites }) {
+export default function AllEventsList({ navigation, events, favoriteEventsId, toggleFavorite }) {
   return (
-    <EventList navigation={navigation} events={loadEvents()} setFavorites={setFavorites} />
+    <EventList
+      navigation={navigation}
+      events={events}
+      favoriteEventsId={favoriteEventsId}
+      toggleFavorite={toggleFavorite}
+    />
   );
 }

@@ -2,17 +2,17 @@ import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 import FavoriteButton from '../../FavoriteButton';
 
-export default function EventCard({ event, setFavorites }) {
+export default function EventCard({ event, favoriteEventsId, toggleFavorite }) {
   return (
     <View style={styles.container}>
-      <Image style={styles.image} source={{ uri: event.images[0] }} />
+      <Image style={styles.image} source={{ uri: event?.images?.[0] || '' }} />
       <View style={styles.containerInfo}>
         <View style={styles.info}>
           <Text style={styles.title}>{event.artista}</Text>
           <Text style={styles.infoText}>{event.data}</Text>
           <Text style={styles.infoText}>{event.endereco}</Text>
           <View style={styles.favoriteButton}>
-            <FavoriteButton event={event} setFavorites={setFavorites} />
+            <FavoriteButton event={event} isFavorite={favoriteEventsId.includes(event.id)} toggleFavorite={toggleFavorite} />
           </View>
         </View>
       </View>

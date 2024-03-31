@@ -10,13 +10,18 @@ import {
 
 import EventCard from './EventCard';
 
-export default function EventList({ navigation, events, setFavorites }) {
+export default function EventList({
+  navigation,
+  events,
+  favoriteEventsId,
+  toggleFavorite,
+}) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 2500);
+    }, 2000);
   }, []);
 
   return (
@@ -35,7 +40,11 @@ export default function EventList({ navigation, events, setFavorites }) {
               <TouchableOpacity
                 onPress={() => navigation.navigate('About', { event: item })}
               >
-                <EventCard event={item} setFavorites={setFavorites} />
+                <EventCard
+                  event={item}
+                  favoriteEventsId={favoriteEventsId}
+                  toggleFavorite={toggleFavorite}
+                />
               </TouchableOpacity>
             )}
           />
@@ -50,6 +59,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#000',
     width: '100%',
     height: '100%',
+    marginBottom: 200
   },
   loading: {
     color: '#E30613',
@@ -62,6 +72,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   gambiarra: {
-    height: 50
+    height: 50,
   }
 });

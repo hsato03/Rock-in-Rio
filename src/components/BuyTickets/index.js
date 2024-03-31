@@ -16,14 +16,6 @@ const styles = StyleSheet.create({
   button: {
     borderRadius: 8,
     backgroundColor: '#E30613',
-    shadowColor: 'rgba(0, 0, 0, 0.12)',
-    shadowOffset: {
-      width: 2,
-      height: 2,
-    },
-    shadowOpacity: 1,
-    shadowRadius: 4,
-    elevation: 4,
     padding: 13,
     margin: 15,
     width: '100%',

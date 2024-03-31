@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Text, View, StyleSheet, SafeAreaView, Image, ScrollView } from 'react-native';
 import YouTubePlayer from 'react-native-youtube-iframe';
 import MapView, { Marker } from 'react-native-maps';
