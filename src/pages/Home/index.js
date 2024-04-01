@@ -49,10 +49,6 @@ const styles = StyleSheet.create({
     width: '100%',
     resizeMode: 'contain',
   },
-  title: {
-    padding: 30,
-    fontSize: 18,
-  },
   button: {
     borderRadius: 8,
     backgroundColor: '#E30613',

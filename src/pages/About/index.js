@@ -1,17 +1,25 @@
 import React from 'react';
-import { Text, View, StyleSheet, SafeAreaView, Image, ScrollView } from 'react-native';
+import { Text, View, StyleSheet, SafeAreaView, Image, ScrollView, TouchableOpacity } from 'react-native';
 import YouTubePlayer from 'react-native-youtube-iframe';
 import MapView, { Marker } from 'react-native-maps';
+
+import { AntDesign } from '@expo/vector-icons';
+
 
 import BuyTickets from '../../components/BuyTickets';
 import LinkWithIcon from '../../components/LinkWithIcon';
 
-export default function About ({ route }) {
+export default function About ({ navigation, route }) {
   const {event} = route.params;
-  
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollViewContent} style={{ width: '100%' }}>
+        <View style={styles.back}>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <AntDesign name="left" size={26} color="#E30613" />
+          </TouchableOpacity>
+        </View>
         <View>
           <Text style={styles.title}>{event.artista}</Text>
         </View>
@@ -113,18 +121,6 @@ const styles = StyleSheet.create({
     marginBottom: 8,
     alignSelf: 'center',
   },
-  contactName: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    height: 44,
-  },
-  contactDetails: {
-    fontSize: 16,
-    height: 44,
-  },
-  button: {
-    padding: 15
-  },
   image: {
     width: '90%',
     height: 200,
@@ -191,5 +187,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     paddingVertical: 8,
+  },
+  back: {
+    position: 'absolute',
+    left: 15,
+    top: 35
   }
 });

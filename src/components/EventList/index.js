@@ -38,7 +38,7 @@ export default function EventList({
             keyExtractor={(event) => event.id}
             renderItem={({ item }) => (
               <TouchableOpacity
-                onPress={() => navigation.navigate('About', { event: item })}
+                onPress={() => navigation.navigate('About', { navigation, event: item })}
               >
                 <EventCard
                   event={item}
@@ -59,7 +59,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#000',
     width: '100%',
     height: '100%',
-    marginBottom: 200
   },
   loading: {
     color: '#E30613',
@@ -72,6 +71,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   gambiarra: {
-    height: 50,
+    height: 50
   }
 });

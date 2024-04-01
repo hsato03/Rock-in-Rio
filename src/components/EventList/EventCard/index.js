@@ -2,6 +2,8 @@ import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 import FavoriteButton from '../../FavoriteButton';
 
+import { formatDate } from '../../../services/dateUtils';
+
 export default function EventCard({ event, favoriteEventsId, toggleFavorite }) {
   return (
     <View style={styles.container}>
@@ -9,7 +11,7 @@ export default function EventCard({ event, favoriteEventsId, toggleFavorite }) {
       <View style={styles.containerInfo}>
         <View style={styles.info}>
           <Text style={styles.title}>{event.artista}</Text>
-          <Text style={styles.infoText}>{event.data}</Text>
+          <Text style={styles.infoText}>{formatDate(event.data)}</Text>
           <Text style={styles.infoText}>{event.endereco}</Text>
           <View style={styles.favoriteButton}>
             <FavoriteButton event={event} isFavorite={favoriteEventsId.includes(event.id)} toggleFavorite={toggleFavorite} />
