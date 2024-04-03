@@ -15,7 +15,6 @@ export async function unfavoriteEvent(eventId) {
   try {
     const favorites = await getFavoriteEvents();
     const updatedFavorites = favorites.filter((id) => id !== eventId);
-    console.log(updatedFavorites);
 
     await AsyncStorage.setItem('favorites', JSON.stringify(updatedFavorites));
   } catch (error) {

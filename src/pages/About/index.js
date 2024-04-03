@@ -2,12 +2,11 @@ import React from 'react';
 import { Text, View, StyleSheet, SafeAreaView, Image, ScrollView, TouchableOpacity } from 'react-native';
 import YouTubePlayer from 'react-native-youtube-iframe';
 import MapView, { Marker } from 'react-native-maps';
-
 import { AntDesign } from '@expo/vector-icons';
-
 
 import BuyTickets from '../../components/BuyTickets';
 import LinkWithIcon from '../../components/LinkWithIcon';
+import { formatDate } from '../../services/dateUtils';
 
 export default function About ({ navigation, route }) {
   const {event} = route.params;
@@ -47,7 +46,7 @@ export default function About ({ navigation, route }) {
         <View style={styles.scheduleContainer}>
           <Text style={styles.subtitle}>Quando e onde acontecerá?</Text>
           <Text style={styles.scheduleText}>{event.endereco}</Text>
-          <Text style={styles.scheduleDate}>{event.data}</Text>
+          <Text style={styles.scheduleDate}>{formatDate(event.data)}</Text>
           <View style={styles.mapContainer}>
             <MapView
               style={styles.map}

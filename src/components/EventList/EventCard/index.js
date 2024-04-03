@@ -61,6 +61,7 @@ const styles = StyleSheet.create({
   containerInfo: {
     height: 150,
     width: 150,
+    paddingTop: 12,
     justifyContent: 'space-around',
   },
   favoriteButton: {
